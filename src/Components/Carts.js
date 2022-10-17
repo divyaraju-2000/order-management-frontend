@@ -22,7 +22,7 @@ const API = "https://order-management-backend.herokuapp.com";
       const[cost,setTotalcost] = useState(0.0);
       const [cart,setCart] = useState([]);
 
-const getCarts = () => {
+function getCarts() {
   fetch(`${API}/getCarts`,{
     method:"GET"
   })
@@ -283,4 +283,6 @@ const getCarts = () => {
       </MDBContainer>
     </section>
     );
+    
     }
+    

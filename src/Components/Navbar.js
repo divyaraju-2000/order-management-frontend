@@ -7,13 +7,39 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useEffect, useState } from 'react';
 
 export default function Navbar() {
+  const API = "https://order-management-backend.herokuapp.com";    
+
+
+  const[cost,setTotalcost] = useState(0.0);
+      const [cart,setCart] = useState([]);
   const [length, setLength] = useState(0);
   const navigate = useNavigate();
   useEffect(() => {
 
+    //getting carts data
+      fetch(`${API}/getCarts`,{
+        method:"GET"
+      })
+      .then((response)=>response.json())
+      .then((data)=>{
+        const cartItems = data.length;
+        localStorage.setItem("length",cartItems)
+        setCart(data)
+      console.log(cartItems);
+    
+      let TotalCost = 0;
+      for(let i=0;i<cartItems;i++){
+        TotalCost += data[i].cost;
+      }
+          console.log(TotalCost)
+          setTotalcost(TotalCost)
+      })
+    
     const length = JSON.parse(localStorage.getItem("length"))
     setLength(length);
-  },[])
+  },[length])
+  console.log(length)
+  const token = localStorage.getItem("access_token");
   return (
     <div >
 
@@ -29,9 +55,19 @@ export default function Navbar() {
             <div>
               <Button color="inherit" >Help</Button>
               <Button color="inherit" onClick={() => navigate('/')}>Home</Button>
-              <Button onClick={()=> navigate("/carts")} style={{padding:"6px 8px"}}
-              
-              ><b><AddShoppingCartIcon style={{ fontSize: "23px", textAlign: "center", padding:0, color:"white", alignItems:"center" }} /></b><sub style={{ background: " #f2f2f2", padding: "1px", textDecoration: "none", borderRadius: "35%", lineHeight: "1.2em", color: "black",fontSize:"12px", alignItems: "center" }}>{length}</sub></Button>
+              {token&&
+              <Button onClick={()=> navigate("/carts")} style={{padding:"6px 8px"}}>
+                <b>
+                
+                <AddShoppingCartIcon style={{ fontSize: "23px", textAlign: "center", padding:0, color:"white", alignItems:"center" }} /></b>
+                
+                <sub style={{ background: " #f2f2f2", padding: "1px", textDecoration: "none", borderRadius: "35%", lineHeight: "1.2em", color: "black",fontSize:"12px", alignItems: "center" }}>
+                  
+                  {length}</sub>
+            
+                </Button>
+              }
+            
             </div>
           </div>
         </Toolbar>
