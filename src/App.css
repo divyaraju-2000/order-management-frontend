@@ -1,3 +1,6 @@
+body{
+  padding-left:4px;
+}
 .wallpaper{
   height:400px;
   width:100%;
@@ -5,27 +8,100 @@
   margin-top:1px;
 }
 
-.row{
+.rowCards{
   display:flex;
   justify-content:space-around;
   padding-left:1px;
   padding-right:1px;
-  background:yellow;
-  gap:15px;
+  background:lightcoral;
+  /* gap:15px; */
+  margin:0;
   
 }
 
-.column{
-  align-items:center;
-  /* padding:2px; */
-  margin:auto;
+.columnCards{
+ background: lightcoral;
+ padding-top:10px;
+  
+}
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+}
+
+.title{
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.images{
+  object-fit:cover;
+  max-width:150px;
+  height:140px;
+  border-radius: 70%;
+}
+
+.foodCards{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content: space-evenly;
+  align-items: stretch;
+  
+}
+
+.cardButton{
+  display: flex;
+  justify-content:space-between;
+  padding:0px;
+  align-items: center;
+}
+
+.cardCost{
+  display: flex;
+  justify-content:space-between;
+  padding:0px;
+  align-items: center;
+}
+.orderPage{
+  background-image: url('https://thumbs.dreamstime.com/z/perspective-wood-over-blurred-restaurant-bokeh-background-foods-drinks-product-display-montage-55441300.jpg');
+  object-fit: cover;
+  object-position:center;
   width:100%;
-  justify-content:center;
-  background:red;
+  height:100%
+}
+@media (min-width: 1025px) {
+  .h-custom {
+  height: 100vh !important;
+  }
+  }
   
-}
-
-.center{
-  /* margin:auto;
-  width:50%; */
-}
+  .card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: .75em;
+  padding-right: .75em;
+  }
+  
+  .card-registration .select-arrow {
+  top: 13px;
+  }
+  
+  .bg-grey {
+  background-color: #eae8e8;
+  }
+  
+  @media (min-width: 992px) {
+  .card-registration-2 .bg-grey {
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  }
+  }
+  
+  @media (max-width: 991px) {
+  .card-registration-2 .bg-grey {
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  }
+  }
