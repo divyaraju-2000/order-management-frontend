@@ -11,7 +11,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 
 export default function CardDetails() {
-  const API = "http://localhost:4050"
+  const API = "https://order-management-backend.herokuapp.com"
   const params = useParams();
   const [view,setView] = useState([]);
 useEffect(() => {

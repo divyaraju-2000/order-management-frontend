@@ -16,7 +16,7 @@ import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
 
-const API = "http://localhost:4050";    
+const API = "https://order-management-backend.herokuapp.com";    
 
     export default function Carts() {
       const[cost,setTotalcost] = useState(0.0);

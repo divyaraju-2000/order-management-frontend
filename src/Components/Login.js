@@ -17,7 +17,7 @@ import { useState } from 'react';
 import {  useNavigate } from 'react-router-dom';
 
 
-const API ="http://localhost:4050";
+const API ="https://order-management-backend.herokuapp.com";
 function Copyright(props) {
   return (
     
