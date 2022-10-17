@@ -14,8 +14,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const API = "http://localhost:4050";
 const Cards = (props) => {
 const[food,setFood] = useState([]);
-const[carts,setCarts] = useState([]);
-const[cartTotal,setCartTotal] = useState(0);
+// const[carts,setCarts] = useState([]);
+// const[cartTotal,setCartTotal] = useState(0);
 const navigate = useNavigate();
 
 
@@ -24,7 +24,7 @@ const changeColor = (id) =>{
       patchData(id,true);
   };
   // console.log("carts",carts,setCarts)
-  console.log(carts)
+  
 
 const addToCart = (item) =>{
   console.log(item);

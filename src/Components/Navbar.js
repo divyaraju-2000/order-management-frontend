@@ -1,7 +1,7 @@
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import { Link, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useEffect, useState } from 'react';
@@ -13,7 +13,7 @@ export default function Navbar() {
 
     const length = JSON.parse(localStorage.getItem("length"))
     setLength(length);
-  })
+  },[length])
   return (
     <div >
 
