@@ -10,8 +10,8 @@ export default function Navbar() {
   const API = "https://order-management-backend.herokuapp.com";    
 
 
-  const[cost,setTotalcost] = useState(0.0);
-      const [cart,setCart] = useState([]);
+  // const[cost,setTotalcost] = useState(0.0);
+      // const [cart,setCart] = useState([]);
   const [length, setLength] = useState(0);
   const navigate = useNavigate();
   useEffect(() => {
@@ -24,15 +24,15 @@ export default function Navbar() {
       .then((data)=>{
         const cartItems = data.length;
         localStorage.setItem("length",cartItems)
-        setCart(data)
+        // setCart(data)
       console.log(cartItems);
     
-      let TotalCost = 0;
-      for(let i=0;i<cartItems;i++){
-        TotalCost += data[i].cost;
-      }
-          console.log(TotalCost)
-          setTotalcost(TotalCost)
+      // let TotalCost = 0;
+      // for(let i=0;i<cartItems;i++){
+      //   TotalCost += data[i].cost;
+      // }
+      //     console.log(TotalCost)
+      //     setTotalcost(TotalCost)
       })
     
     const length = JSON.parse(localStorage.getItem("length"))
@@ -75,5 +75,3 @@ export default function Navbar() {
     </div>
   );
 }
-
-// export default Navbar;
