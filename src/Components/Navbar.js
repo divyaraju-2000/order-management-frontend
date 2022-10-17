@@ -13,7 +13,7 @@ export default function Navbar() {
 
     const length = JSON.parse(localStorage.getItem("length"))
     setLength(length);
-  },[length])
+  },[])
   return (
     <div >
 
