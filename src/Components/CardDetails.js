@@ -14,12 +14,12 @@ export default function CardDetails() {
   const API = "https://order-management-backend.herokuapp.com"
   const params = useParams();
   const [view,setView] = useState([]);
+  const navigate = useNavigate();
 useEffect(() => {
   fetch(`${API}/food/${params.id}`)
   .then((response) => response.json())
   .then((data) => setView(data))
 }, [params.id]);
-const navigate = useNavigate();
 
 
   return (

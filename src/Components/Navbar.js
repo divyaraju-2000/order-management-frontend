@@ -4,33 +4,14 @@ import Button from '@mui/material/Button';
 import {useNavigate } from 'react-router-dom';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { useEffect, useState } from 'react';
+
 
 export default function Navbar(props) {
-  // const API = "https://order-management-backend.herokuapp.com";    
 
-
-  // const[cost,setTotalcost] = useState(0.0);
-      // const [cart,setCart] = useState([]);
-  // const [length, setLength] = useState(0.0);
   const navigate = useNavigate();
   const {totalLength}=props;
-  console.log("nav",props.totalLength)
-  // useEffect(() => {
-
-  
-  //   const localLength = localStorage.setItem("length",length);
-  //   if(localLength>0){
-
-  //     const length = localLength
-  //     setLength(length);
-  //   }
-  //   else{
-     
-  //     setLength(0);
-  //   }
-  // },[length])
-  // console.log(length)
+  // console.log("nav",props.totalLength)
+ 
   const token = localStorage.getItem("access_token");
   return (
     <div >

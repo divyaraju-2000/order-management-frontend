@@ -11,11 +11,16 @@ import { useNavigate } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
-const API = "http://localhost:4050";
+const API = "https://order-management-backend.herokuapp.com";
 const Cards = (props) => {
-const[food,setFood] = useState([]);
+  
+  useEffect(() =>{
+    getFood();
+    updateCartNo();
+  });
+
+  const[food,setFood] = useState([]);
 const{carts,setCarts} = props;
-// const[cartTotal,setCartTotal] = useState(0);
 const navigate = useNavigate();
 
 
@@ -23,11 +28,10 @@ const changeColor = (id) =>{
   console.log(id);
       patchData(id,true);
   };
-  // console.log("carts",carts,setCarts)
   
 
 const addToCart = (item) =>{
-  console.log(item);
+  // console.log(item);
   const data = {
     "food":item.name,
     "cost":item.cost,
@@ -67,17 +71,13 @@ const updateCartNo =() => {
         const cartItems = data.length;
         setCarts(cartItems)
       console.log(cartItems,carts);
-      // localStorage.setItem("length",cartItems)
-      
-      })
      
       
+      })
 }
 
 const patchData =(id,like) => {
 
-// const updatedlike = !like;
-//dummy data
   const updateData = {
     likes: like,
   }
@@ -97,10 +97,7 @@ const patchData =(id,like) => {
   .catch((error) => {
     console.error('Error:', error);
   });
-  console.log("123");
- 
-  
-}
+  }
 
   const getFood = () =>{
     const token = localStorage.getItem("access_token");
@@ -113,12 +110,7 @@ const patchData =(id,like) => {
     })
     .then((data)=>data.json())
     .then((fb)=>setFood(fb));
-    // console.log(setFood);
   }
-  useEffect(() =>{
-    getFood();
-    updateCartNo();
-  }, []);
 
   const onDelete = (id) => {
     const token = localStorage.getItem("access_token");

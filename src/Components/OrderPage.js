@@ -13,7 +13,7 @@ export default function OrderPage(){
   const[total,setTotal] = useState(0.0)
   const navigate = useNavigate();
   const params = useParams();
-  console.log("params",params.name)
+  // console.log("params",params.name)
   const API = "https://order-management-backend.herokuapp.com";
   const formik = useFormik({
     initialValues : {
@@ -38,9 +38,7 @@ export default function OrderPage(){
   
   const updateDetails = (values) =>{
 
-    // console.log(values,typeof(values))
-
-    console.log(values)
+    // console.log(values)
 
     const data = {
         name:values.name,
@@ -68,45 +66,16 @@ export default function OrderPage(){
         .catch((error) => {
           console.error('Error:', error);
         });
-    // updateItems(values.food)
 
   };
 
-  // const updateItems = (name) =>{
-  //   // const items = params.items - 1;
-  //   // console.log(items, typeof(items));
-  //   fetch(`${API}/updatesfood/`+name,{
-  //     method:"PATCH",
-  //     headers:{
-  //       "Content-type":"application/json",
-  //     },
-  //     body:JSON.stringify({
-  //       available:items,
-  //     })
-  //   }
-  //   )
-  //   .then((response)=>response.json())
-  //   .then((data) => {
-  //     console.log("UpdatedItems:",data)
-  //   })
-  //   .catch((error)=>{console.log(error)});
-  // }
 
 
   function onChange(e){
     console.log(e.target.value,formik.values.ordered_items)
-        // const totalCost = (formik.values.ordered_items) * parseFloat(params.cost)
-        // setTotal(totalCost);
-        setTotal(e.target.value)
-       
-        // formik.values.setFieldValue('total_cost',e.target.value*params.cost) 
-           
-        // const total_cost = e.target.value.replace("",e.target.value*params.cost);
-        // formik.setFieldValue("total_cost",total_cost) 
-        
-        // console.log(total)
 
-  }
+        setTotal(e.target.value)
+}
 console.log(total)
     return(
       <div className='orderPage'>
@@ -154,16 +123,6 @@ console.log(total)
 
         />
 
-    {/* <TextField
-          id="standard-password-input"
-          label="Alternate phone"
-          name="altphn"
-          variant="standard"
-          value={formik.values.altPhn}
-          onChange={formik.handleChange}
-
-        /> */}
-
 <TextField
           id="standard-password-input"
           label="Food"
@@ -198,29 +157,13 @@ console.log(total)
             formik.handleChange
             
             
-          }
-          // onChange={e=>{
-          //   formik.handleChange()
-          //   console.log(e.target.value)
-          //   // onChange(e)
-          //   const total_cost = e.target.value*params.cost
-          // }}
-          // inputProps={{
-
-          //   onInput:e => onChange(e,setFieldValue)
-          // }}
-
-        />
+          }/>
 
 <TextField
           id="standard-password-input"
           label="Total Cost"
           name="total_cost"
           variant="standard"
-          // inputProps={{
-
-          //   onInput:onChange
-          // }}
           value={total*params.cost}
           
           onChange={formik.handleChange}
@@ -229,23 +172,7 @@ console.log(total)
         />
 
 
-{/* <TextField
-          id="outlined-number"
-          variant="standard"
-          label="Quantity"
-          type="number"
-          name="ordered_items"
-          InputLabelProps={{
-            shrink: true,
-            
-          }}
-          inputProps={{
 
-            onInput:onChange
-          }}
-          value={formik.values.ordered_items}
-          onChange={formik.handleChange}
-        /> */}
         <br></br>
         <button type="submit" style={{background:"#ff1a75", color:"whitesmoke", border:0, borderRadius:"20px", padding:"10px"}} onClick={() =>updateDetails(formik.values)}>SUBMIT</button>
         </Stack>

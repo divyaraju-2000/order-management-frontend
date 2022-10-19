@@ -95,7 +95,6 @@ const registerUser = (values) => {
               name="name"
               value={formik.values.name}
               onChange={formik.handleChange}
-              //   autoComplete="email"
               autoFocus
               />
             <TextField
@@ -107,7 +106,6 @@ const registerUser = (values) => {
               name="username"
               value={formik.values.username}
               onChange={formik.handleChange}
-              //   autoComplete="email"
               
               />
             <TextField
@@ -121,8 +119,8 @@ const registerUser = (values) => {
               value={formik.values.password}
               onChange={formik.handleChange}
 
-              //   autoComplete="current-password"
               />
+              
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"

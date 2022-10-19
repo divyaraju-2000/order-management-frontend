@@ -17,8 +17,8 @@ import { useState } from 'react';
 import {  useNavigate } from 'react-router-dom';
 
 
-const API ="http://localhost:4050";
-function Copyright(props) {
+const API ="https://order-management-backend.herokuapp.com";
+function Copyright() {
   return (
     
     <div style={{textAlign:"center"}}>
@@ -78,8 +78,6 @@ function Copyright(props) {
         localStorage.setItem("user",formik.values.username)
 
        navigate("/cards");
-
-         //getting carts data
       
 
     }
@@ -116,7 +114,6 @@ function Copyright(props) {
               name="username"
               value={formik.values.username}
               onChange={formik.handleChange}
-              //   autoComplete="email"
               autoFocus
               />
             <TextField
@@ -130,7 +127,7 @@ function Copyright(props) {
               value={formik.values.password}
               onChange={formik.handleChange}
 
-              //   autoComplete="current-password"
+             
               />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
