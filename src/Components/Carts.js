@@ -16,23 +16,34 @@ import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
 
-const API = "https://order-management-backend.herokuapp.com";    
+const API = "http://localhost:4050";    
 
-    export default function Carts() {
+    export default function Carts(props) {
       const[cost,setTotalcost] = useState(0.0);
+      const {cartlength,setCartLength} = props;
       const [cart,setCart] = useState([]);
+      console.log(props)
 
 function getCarts() {
   fetch(`${API}/getCarts`,{
-    method:"GET"
+    method:"GET",
+    headers:{
+      "user":localStorage.getItem("user")
+    }
+    
   })
   .then((response)=>response.json())
   .then((data)=>{
-    console.log(data);
-    const cartItems = data.length;
-    localStorage.setItem("length",cartItems)
-    setCart(data)
-  console.log(cartItems);
+    
+
+      console.log(data);
+      const cartItems = data.length;
+      setCart(data)
+      console.log("carts",cart)
+      setCartLength(cartItems);
+      console.log(cartLength,"cartlength");
+   
+    
 
   // const cost = Object.values(data.cost);
   // const totalCost = cost.reduce((accumulator,value)=>{
@@ -82,60 +93,66 @@ function getCarts() {
                           Shopping Cart
                         </MDBTypography>
                         <MDBTypography className="mb-0 text-muted">
-                          {cartLength} items
+                          {cartlength} items
                         </MDBTypography>
                       </div>
     
-                      <hr className="my-4" />
-      {cart.map((cartData)=>(
-    
-                      <MDBRow className="mb-4 d-flex justify-content-between align-items-center" key={cartData._id}>
-                        <MDBCol md="2" lg="2" xl="2">
-                          <MDBCardImage
-                            src={cartData.src}
-                            fluid className="rounded-3" alt="food" />
-                        </MDBCol>
-                        <MDBCol md="3" lg="3" xl="3">
-                          {/* <MDBTypography tag="h6" className="text-muted">
-                            Shirt
-                          </MDBTypography> */}
-                          <MDBTypography tag="h6" className="text-black mb-0">
-                            {cartData.food}
-                          </MDBTypography>
-                        </MDBCol>
-                        <MDBCol md="3" lg="3" xl="3" className="d-flex align-items-center">
-                          <MDBBtn color="link" className="px-2">
-                            <MDBIcon fas icon="minus" />
-                          </MDBBtn>
-    
-                          {/* <MDBInput type="number" min="0" defaultValue={1} size="sm" disabled InputProps={{ readOnly: true }} /> */}
-    
-                          <MDBBtn color="link" className="px-2">
-                            <MDBIcon fas icon="plus" />
-                          </MDBBtn>
-                        </MDBCol>
-                        <MDBCol md="3" lg="2" xl="2" className="text-end">
-                          <MDBTypography tag="h6" className="mb-0">
-                          ₹ {cartData.cost}
-                          </MDBTypography>
-                        </MDBCol>
-                        <MDBCol md="1" lg="1" xl="1" className="text-end">
-                          <a href="#!" className="text-muted">
-                            <MDBIcon fas icon="times" />
-                          </a>
-                        </MDBCol>
-                        <button style={{padding:0,textDecoration:"none",border:"none",background:"none"}} onClick={() => deleteCart(cartData._id)}>
 
-                        <DeleteIcon color="error"/>
-                        </button>
-                        
-                        <Button  size="small" variant ="contained"   onClick={() => navigate(`/order/${cartData.food}/${cartData.cost}`)} style={{ background:"#b30086", margin:" 1px 15px", maxWidth:"100%", fontSize:"12px", height:"20px",alignItems:"center"}}>Order</Button>
-                      </MDBRow>
-                        ))}
+                      <hr className="my-4" />
+    {cart ?
+      cart.map((cartData)=>(
+        
+        <MDBRow className="mb-4 d-flex justify-content-between align-items-center" key={cartData._id}>
+        <MDBCol md="2" lg="2" xl="2">
+        <MDBCardImage
+        src={cartData.src}
+        fluid className="rounded-3" alt="food" />
+        </MDBCol>
+        <MDBCol md="3" lg="3" xl="3">
+        {/* <MDBTypography tag="h6" className="text-muted">
+        Shirt
+      </MDBTypography> */}
+        <MDBTypography tag="h6" className="text-black mb-0">
+        {cartData.food}
+        </MDBTypography>
+        </MDBCol>
+        <MDBCol md="3" lg="3" xl="3" className="d-flex align-items-center">
+        <MDBBtn color="link" className="px-2">
+        <MDBIcon fas icon="minus" />
+        </MDBBtn>
+        
+        {/* <MDBInput type="number" min="0" defaultValue={1} size="sm" disabled InputProps={{ readOnly: true }} /> */}
+        
+        <MDBBtn color="link" className="px-2">
+        <MDBIcon fas icon="plus" />
+        </MDBBtn>
+        </MDBCol>
+        <MDBCol md="3" lg="2" xl="2" className="text-end">
+        <MDBTypography tag="h6" className="mb-0">
+        ₹ {cartData.cost}
+        </MDBTypography>
+        </MDBCol>
+        <MDBCol md="1" lg="1" xl="1" className="text-end">
+        <a href="#!" className="text-muted">
+        <MDBIcon fas icon="times" />
+        </a>
+        </MDBCol>
+        <button style={{padding:0,textDecoration:"none",border:"none",background:"none"}} onClick={() => deleteCart(cartData._id)}>
+        
+        <DeleteIcon color="error"/>
+        </button>
+        
+        <Button  size="small" variant ="contained"   onClick={() => navigate(`/order/${cartData.food}/${cartData.cost}`)} style={{ background:"#b30086", margin:" 1px 15px", maxWidth:"100%", fontSize:"12px", height:"20px",alignItems:"center"}}>Order</Button>
+        </MDBRow>
     
-                      {/* <hr className="my-4" />
+    )):
+    <div>"Sorry! There is no cart added in your account"</div>
+    }
+
     
-    <MDBRow className="mb-4 d-flex justify-content-between align-items-center">
+  
+    
+    {/* <MDBRow className="mb-4 d-flex justify-content-between align-items-center">
     <MDBCol md="2" lg="2" xl="2">
     <MDBCardImage
     src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img6.webp"
@@ -193,25 +210,30 @@ function getCarts() {
     <MDBIcon fas icon="minus" />
     </MDBBtn>
     
-                          <MDBInput type="number" min="0" defaultValue={1} size="sm" />
+    <MDBInput type="number" min="0" defaultValue={1} size="sm" />
     
-                          <MDBBtn color="link" className="px-2">
-                          <MDBIcon fas icon="plus" />
-                          </MDBBtn>
-                          </MDBCol>
-                          <MDBCol md="3" lg="2" xl="2" className="text-end">
-                          <MDBTypography tag="h6" className="mb-0">
-                          € 44.00
-                          </MDBTypography>
-                          </MDBCol>
-                          <MDBCol md="1" lg="1" xl="1" className="text-end">
-                          <a href="#!" className="text-muted">
-                          <MDBIcon fas icon="times" />
+    <MDBBtn color="link" className="px-2">
+    <MDBIcon fas icon="plus" />
+    </MDBBtn>
+    </MDBCol>
+    <MDBCol md="3" lg="2" xl="2" className="text-end">
+    <MDBTypography tag="h6" className="mb-0">
+    € 44.00
+    </MDBTypography>
+    </MDBCol>
+    <MDBCol md="1" lg="1" xl="1" className="text-end">
+    <a href="#!" className="text-muted">
+    <MDBIcon fas icon="times" />
                           </a>
                           </MDBCol>
-                        </MDBRow> */}
+                        </MDBRow> */} 
     
-                      <hr className="my-4" />
+                          <hr className="my-4" />
+                        
+                        
+                                
+                                
+                          
     
                       <div className="pt-5">
                         <MDBTypography tag="h6" className="mb-0">

@@ -10,14 +10,15 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 
 import Carts from './Components/Carts';
+import { useState } from 'react';
 
 
 
 function App() {
-  
+  const[cartlength,setCartLength] = useState(0)
   return (
     <div>
-      <Navbar/>
+      <Navbar totalLength={cartlength}/>
       <Routes>
        
       <Route path="/" element={<><LandingPage/></> }/>
@@ -27,11 +28,11 @@ function App() {
       <Route path="/cards" element = {
     //  <ProtectedRoute>
 
-      <Cards/>
+      <Cards setCarts={setCartLength}/>
     //  </ProtectedRoute>
       
     } />
-    <Route path="/carts" element={<Carts/>}/>
+    <Route path="/carts" element={<Carts cartlength={cartlength} setCartLength={setCartLength}/>}/>
       <Route path="/order/:name/:cost" element = {<OrderPage/>}/>
       <Route path="/login" element = {<Login/>}/>
       {/* <Route path="/" element ={ <Navigate replace to="/login"/> }/> */}

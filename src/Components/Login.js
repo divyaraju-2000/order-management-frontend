@@ -17,7 +17,7 @@ import { useState } from 'react';
 import {  useNavigate } from 'react-router-dom';
 
 
-const API ="https://order-management-backend.herokuapp.com";
+const API ="http://localhost:4050";
 function Copyright(props) {
   return (
     
@@ -75,7 +75,12 @@ function Copyright(props) {
         console.log(user);
         localStorage.setItem("access_token",user.token)
         localStorage.setItem("isAdmin",user.isAdmin)
+        localStorage.setItem("user",formik.values.username)
+
        navigate("/cards");
+
+         //getting carts data
+      
 
     }
   };

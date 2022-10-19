@@ -11,10 +11,10 @@ import { useNavigate } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
-const API = "https://order-management-backend.herokuapp.com";
+const API = "http://localhost:4050";
 const Cards = (props) => {
 const[food,setFood] = useState([]);
-// const[carts,setCarts] = useState([]);
+const{carts,setCarts} = props;
 // const[cartTotal,setCartTotal] = useState(0);
 const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const addToCart = (item) =>{
     "food":item.name,
     "cost":item.cost,
     "src":item.src,
-    "token":localStorage.getItem("access_token")
+    "user":localStorage.getItem("user")
   }
  
           fetch(`${API}/updateCarts`,{
@@ -56,13 +56,19 @@ const addToCart = (item) =>{
   
 const updateCartNo =() => {
       fetch(`${API}/getCarts`,{
-        method:"GET"
+        method:"GET",
+        headers:{
+          "user":localStorage.getItem("user")
+        }
       })
       .then((response)=>response.json())
       .then((data)=>{
         console.log(data);
         const cartItems = data.length;
-      console.log(cartItems);
+        setCarts(cartItems)
+      console.log(cartItems,carts);
+      // localStorage.setItem("length",cartItems)
+      
       })
      
       
@@ -111,6 +117,7 @@ const patchData =(id,like) => {
   }
   useEffect(() =>{
     getFood();
+    updateCartNo();
   }, []);
 
   const onDelete = (id) => {
