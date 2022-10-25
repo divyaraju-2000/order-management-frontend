@@ -58,13 +58,13 @@ function Copyright() {
   const onLogin = async (userData) => {
     const data = await fetch(`${API}/users/signin`,{
       method:"POST",
-      mode:"no-cors",
+      
       headers:{
         "Content-type":"application/json",
       },
       body:JSON.stringify(userData)
       
-    })
+    });
     
     if(data.status === 404 ||  data.status ===401){
         setColor("error");
@@ -72,7 +72,8 @@ function Copyright() {
         console.log(data);
     }
     else{
-      const user = await data.json();
+     
+           const user = await data.json();
         console.log(user);
         localStorage.setItem("access_token",user.token)
         localStorage.setItem("isAdmin",user.isAdmin)

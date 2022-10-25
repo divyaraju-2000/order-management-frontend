@@ -53,7 +53,6 @@ export default function OrderPage(){
         fetch(`${API}/updateuser`,
           {
             method:"POST",
-            mode:"no-cors",
             headers:{
               "Content-type":"application/json",
             },

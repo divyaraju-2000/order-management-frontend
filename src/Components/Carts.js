@@ -47,7 +47,6 @@ function getCarts() {
       const deleteCart = (cartID) => {
         fetch(`${API}/deleteCarts/${cartID}`,{
           method: "DELETE",
-          mode:"no-cors",
         })
         .then((response)=>{
           console.log(response);

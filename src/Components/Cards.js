@@ -41,7 +41,6 @@ const addToCart = (item) =>{
  
           fetch(`${API}/updateCarts`,{
             method:"POST",
-            mode:"no-cors",
             headers:{
               "Content-type":"application/json",
             },
@@ -68,10 +67,10 @@ const updateCartNo =() => {
       })
       .then((response)=>response.json())
       .then((data)=>{
-        console.log(data);
+        // console.log(data);
         const cartItems = data.length;
         setCarts(cartItems)
-      console.log(cartItems,carts);
+      // console.log(cartItems,carts);
      
       
       })
@@ -86,7 +85,6 @@ const patchData =(id,like) => {
   fetch(`${API}/updatefood/${id}`, {
     method: "PATCH",
     body: JSON.stringify(updateData),
-    mode:"no-cors",
     headers: {
       "Content-type" : "application/json; charset=UTF-8",
     },
@@ -103,7 +101,7 @@ const patchData =(id,like) => {
 
   const getFood = () =>{
     const token = localStorage.getItem("access_token");
-    console.log(token)
+    // console.log(token)
     fetch(`${API}/food`,{
       method:"GET",
       headers:{
@@ -118,7 +116,6 @@ const patchData =(id,like) => {
     const token = localStorage.getItem("access_token");
     fetch(`${API}/deletefood/${id}`,{
       method:"DELETE",
-      mode:"no-cors",
       headers:{
         "x-auth-token":token
       },
