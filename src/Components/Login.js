@@ -18,6 +18,8 @@ import {  useNavigate } from 'react-router-dom';
 
 
 const API ="https://order-management-backend.herokuapp.com";
+const header = new Headers({ "Access-Control-Allow-Origin": "*",
+"Content-type":"application/json", });
 function Copyright() {
   return (
     
@@ -59,9 +61,7 @@ function Copyright() {
     const data = await fetch(`${API}/users/signin`,{
       method:"POST",
       
-      headers:{
-        "Content-type":"application/json",
-      },
+      headers:header,
       body:JSON.stringify(userData)
       
     });
