@@ -60,7 +60,7 @@ function Copyright() {
   const onLogin = async (userData) => {
     const data = await fetch(`${API}/users/signin`,{
       method:"POST",
-      
+      mode: 'no-cors',
       headers:header,
       body:JSON.stringify(userData)
       
