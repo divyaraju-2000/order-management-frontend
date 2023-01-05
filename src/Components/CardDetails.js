@@ -11,7 +11,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 
 export default function CardDetails() {
-  const API = "https://order-management-backend.herokuapp.com"
+  const API = "https://order-management-backend-1e6jwssao-rajudivya399-gmailcom.vercel.app"
   const params = useParams();
   const [view,setView] = useState([]);
   const navigate = useNavigate();

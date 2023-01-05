@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
-const API = "https://order-management-backend.herokuapp.com";
+const API = "https://order-management-backend-1e6jwssao-rajudivya399-gmailcom.vercel.app";
 const Cards = (props) => {
   
   useEffect(() =>{

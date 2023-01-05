@@ -14,7 +14,7 @@ export default function OrderPage(){
   const navigate = useNavigate();
   const params = useParams();
   // console.log("params",params.name)
-  const API = "https://order-management-backend.herokuapp.com";
+  const API = "https://order-management-backend-1e6jwssao-rajudivya399-gmailcom.vercel.app";
   const formik = useFormik({
     initialValues : {
       name:"",
