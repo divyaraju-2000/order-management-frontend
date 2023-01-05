@@ -18,8 +18,8 @@ import {  useNavigate } from 'react-router-dom';
 
 
 const API ="https://order-management-backend-1e6jwssao-rajudivya399-gmailcom.vercel.app";
-const header = new Headers({ "Access-Control-Allow-Origin": "*",
-"Content-type":"application/json", });
+// const header = new Headers({ "Access-Control-Allow-Origin": "*",
+// "Content-type":"application/json", });
 function Copyright() {
   return (
     
@@ -60,11 +60,13 @@ function Copyright() {
   const onLogin = async (userData) => {
     const data = await fetch(`${API}/users/signin`,{
       method:"POST",
-      mode: 'no-cors',
-      headers:header,
+      mode: 'cors',
+      headers:{
+        "Content-type":"application/json",
+      },
       body:JSON.stringify(userData)
       
-    });
+    })
     
     if(data.status === 404 ||  data.status ===401){
         setColor("error");
@@ -73,7 +75,7 @@ function Copyright() {
     }
     else{
      
-           const user = data;
+        const user = await data.json();
         console.log(user);
         localStorage.setItem("access_token",user.token)
         localStorage.setItem("isAdmin",user.isAdmin)
