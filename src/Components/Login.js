@@ -73,7 +73,7 @@ function Copyright() {
     }
     else{
      
-           const user = await data.json();
+           const user = data;
         console.log(user);
         localStorage.setItem("access_token",user.token)
         localStorage.setItem("isAdmin",user.isAdmin)
