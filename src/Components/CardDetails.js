@@ -26,7 +26,7 @@ useEffect(() => {
     <>
    
 
-    <Card sx={{ maxWidth: 900, margin:"auto", objectFit:"cover", marginTop:"45px" }}>
+    <Card sx={{ maxWidth: 900, objectFit:"cover", marginTop:"45px" }}>
       <CardActionArea>
         <CardMedia
           component="img"

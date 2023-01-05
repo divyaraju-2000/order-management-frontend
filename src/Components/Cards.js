@@ -20,7 +20,7 @@ const Cards = (props) => {
   });
 
   const[food,setFood] = useState([]);
-const{carts,setCarts} = props;
+const{setCarts} = props;
 const navigate = useNavigate();
 
 

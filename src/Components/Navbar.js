@@ -16,7 +16,7 @@ export default function Navbar(props) {
   return (
     <div >
 
-      <AppBar position="fixed" style={{ background: "#8000ff", marginTop: "5px" }} >
+      <AppBar position="fixed" style={{ background: "#8000ff" }} >
         <Toolbar style={{ minHeight: "40px", margin: 0 }}>
           <div className="navbar" style={{ width: "100%", display: "flex", justifyContent: "space-between", padding: 0, textAlign: "center" }}>
             <div className="title">
