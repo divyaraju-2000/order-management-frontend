@@ -16,7 +16,9 @@ export default function CardDetails() {
   const [view,setView] = useState([]);
   const navigate = useNavigate();
 useEffect(() => {
-  fetch(`${API}/food/${params.id}`)
+  fetch(`${API}/food/${params.id}`,{
+    mode:"cors"
+  })
   .then((response) => response.json())
   .then((data) => setView(data))
 }, [params.id]);

@@ -53,6 +53,7 @@ const formik = useFormik({
 const registerUser = (values) => {
     fetch(`${API}/users/register`,{
         method:"POST",
+        mode:'cors',
         headers:{
             "Content-type": "application/json",
         },

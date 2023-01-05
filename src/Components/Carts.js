@@ -22,6 +22,7 @@ export default function Carts(props) {
 function getCarts() {
   fetch(`${API}/getCarts`,{
     method:"GET",
+    mode:"cors",
     headers:{
       "user":localStorage.getItem("user")
     }
@@ -47,6 +48,7 @@ function getCarts() {
       const deleteCart = (cartID) => {
         fetch(`${API}/deleteCarts/${cartID}`,{
           method: "DELETE",
+          mode:'cors',
         })
         .then((response)=>{
           console.log(response);
